@@ -1,13 +1,13 @@
 import React, { useState } from 'react';
 import useGetPhoto from '../util/useGetPhoto';
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { media } from '../util/styled/media';
 import Photo from './photo/Photo';
 
 
 const Landing = () => {
     // Page state
-    const [ albumId, setAlbumId ] = useState(1);
+    const [ albumId, setAlbumId ] = useState(99);
     // data state
     const { loading, error, photos, hasMore} = useGetPhoto(albumId);
     const handleLoadMore = () => {
@@ -21,7 +21,12 @@ const Landing = () => {
                     return <Photo key={photo.id} product={photo}/>
                 })}
             </ProductListWrap>
-            {hasMore && <button onClick={handleLoadMore}>GO</button>}
+            <BtnWrap showBtn={hasMore}>
+                {hasMore ?
+                    <button onClick={handleLoadMore}>Show more</button> :
+                    <h3>End of results</h3>
+                }
+            </BtnWrap>
         </Wrapper>
     )
 }
@@ -49,6 +54,38 @@ const ProductListWrap = styled.div`
     ${media.tablat_S} {
         width: 100%;
         align-items: center;
+    }
+`
+
+const BtnWrap = styled.div`
+    width: 90%;
+    height: 85px;
+    margin-bottom: 30px;
+    border-bottom: solid 1px ${props => props.theme.lightGray};
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 50px;
+    ${props => !props.showBtn && css`
+        background-color: ${props => props.theme.primWhite};
+        border-bottom: solid 1px ${props => props.theme.primWhite};
+    `}
+    button {
+        border: none;
+        outline: none;
+        font-size: 1.1rem;
+        padding: 1rem 2.5rem;
+        cursor: pointer;
+        color: ${props => props.theme.primWhite};
+        background-color: ${props => props.theme.interactive};
+        transition: 0.2s;
+        &:hover {
+            background-color: ${props => props.theme.interactiveDark};
+        }
+    }
+    h3 {
+        color: ${props => props.theme.darkGray};
+        font-weight: 400;
     }
 `
 export default Landing;

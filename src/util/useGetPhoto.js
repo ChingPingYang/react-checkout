@@ -20,7 +20,7 @@ const useGetPhoto = (albumId) => {
             setLoading(false);
             if(res.data.length < 1) {
                 setHasMore(false)
-                setError('End of result.')
+                setError('End of results.')
             } else {
                 setPhotos((prev => {
                     return [...prev, ...setPrice(res.data)];

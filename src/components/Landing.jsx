@@ -4,13 +4,16 @@ import styled from 'styled-components';
 import { media } from '../util/styled/media';
 import Photo from './photo/Photo';
 
+
 const Landing = () => {
+    // Page state
     const [ albumId, setAlbumId ] = useState(1);
+    // data state
     const { loading, error, photos, hasMore} = useGetPhoto(albumId);
     const handleLoadMore = () => {
         setAlbumId((prev) => prev + 1);
     }
-    console.log(photos)
+    
     return (
         <Wrapper>
             <ProductListWrap>

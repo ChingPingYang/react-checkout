@@ -1,9 +1,12 @@
-import React from 'react';
+import React ,{ useContext }from 'react';
 import { Link, withRouter } from 'react-router-dom';
 import styled ,{ css }from 'styled-components';
 import { media } from '../../util/styled/media';
+import { CartContext } from '../../util/CartContext';
 
-const Navbar = ({location, cart = {cart:[]}}) => {
+const Navbar = ({location}) => {
+    const {state, dispatch} = useContext(CartContext);
+    
     return (
         <NavWrap>
             <ListWrap>
@@ -23,7 +26,7 @@ const Navbar = ({location, cart = {cart:[]}}) => {
                             <circle cx="8" cy="18" r="2" stroke={location.pathname === "/cart" ? "#0028FF" : "#676F79"} strokeWidth="1.5"/>
                             <circle cx="20" cy="18" r="2" stroke={location.pathname === "/cart" ? "#0028FF" : "#676F79"} strokeWidth="1.5"/>
                         </svg>
-                        {cart.cart !== null && <div><h5>{cart.cart.length}</h5></div>}
+                        {state.cart !== null && <div><h5>{state.cart.length}</h5></div>}
                     </Link>
                 </li>
             </ListWrap>

@@ -2,6 +2,7 @@ import React ,{ useContext }from 'react';
 import { CartContext } from '../../util/CartContext';
 import styled from 'styled-components';
 import { media } from '../../util/styled/media';
+import { addToCart } from '../../actions/cartAction';
 
 const Photo = ({product: { id, price, title, thumbnailUrl }}) => {
     // Cart context
@@ -9,25 +10,7 @@ const Photo = ({product: { id, price, title, thumbnailUrl }}) => {
 
     const handleAddToCart = () => {
         const product = { id, price, title, thumbnailUrl}
-        let cart = JSON.parse(localStorage.getItem('cart'));
-        if(cart === null) {
-            cart = [{...product, quantity: 1}];
-            localStorage.setItem('cart', JSON.stringify(cart));
-            dispatch({type: "ADD-PRODUCT", payload: cart});
-        } else {
-            const index = cart.map(p => p.id).indexOf(product.id);
-            
-            // If the product is not in the cart, index will be -1
-            if(index >= 0 ) {
-                cart[index].quantity++;
-                localStorage.setItem('cart',JSON.stringify(cart));
-                dispatch({type: "ADD-PRODUCT", payload: cart});
-            } else {
-                cart.push({...product, quantity: 1});
-                localStorage.setItem('cart', JSON.stringify(cart));
-                dispatch({ type: "ADD-PRODUCT", payload: cart});
-            }
-        }
+        addToCart(product, dispatch);
     }
 
     return (

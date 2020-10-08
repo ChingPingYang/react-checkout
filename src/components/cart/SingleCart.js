@@ -1,16 +1,21 @@
-import React from 'react';
+import React , { useEffect, useContext } from 'react';
+import { CartContext } from '../../util/CartContext';
 import styled from 'styled-components';
 import { media } from '../../util/styled/media';
+import { plusQuantity, minusQuantity, removeCart } from '../../actions/cartAction';
 
 const SingleCart = ({cart:{ id, price, title, thumbnailUrl, quantity}}) => {
+    const {state, dispatch} = useContext(CartContext);
+    
     const handlePlus = (id) => {
-        // plusQuantity(id);
+        plusQuantity(id, dispatch);
     }
     const handleMinus = (id) => {
-        // minusQuantity(id);
+        minusQuantity(id, dispatch);
     }
     const handleRemove = (id) => {
-        // removeCart(id);
+        console.log('gi')
+        removeCart(id, dispatch);
     }
     return (
         <Wrap>
@@ -94,10 +99,6 @@ const CartName = styled.div`
     font-size: 1.3rem;
     letter-spacing: 0.05rem;
     font-weight: 300;
-    cursor: pointer;
-    :hover {
-        text-decoration: underline;
-    }
 `
 const QuantityWrap = styled.div`
     width: 120px;

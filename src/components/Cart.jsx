@@ -3,6 +3,7 @@ import { CartContext } from '../util/CartContext';
 import styled from 'styled-components';
 import { media } from '../util/styled/media';
 import SingleCart from './cart/SingleCart';
+import CheckOut from './cart/CheckOut';
 
 const Cart = () => {
     const {state, dispatch} = useContext(CartContext);
@@ -14,6 +15,7 @@ const Cart = () => {
                     <ProductsSection>
                             {cart.map(item => <SingleCart key={item.id} cart={item} />)}
                     </ProductsSection>
+                    <CheckOut cart={cart}/>
                 </>
             }
         </Wrapper>
@@ -28,18 +30,14 @@ const Wrapper = styled.main`
     flex-direction: column;
     align-items: center;
     background-color: ${props => props.theme.primWhite};
-    border: solid 1px red;
 `
 
 const ProductsSection = styled.section`
-    width: 63%;
+    width: 80%;
     ${media.tablat_S} {
         width: 100%;
     }
 `
-
-
-
 
 const NoProductMsg = styled.h1`
     color: ${props => props.theme.brandBlue};

@@ -40,3 +40,18 @@ export const removeCart = (id, dispatch) => {
     localStorage.setItem('cart', JSON.stringify(newCart));
     dispatch({ type: "REMOVE_CART", payload: newCart});
 }
+
+export const matchCoupon = (coupon, dispatch) => {
+    const coupons = ["AAAA", "BBBB"];
+    let matched = false
+    coupons.forEach(c => c === coupon && (matched = true));
+    if(matched){
+        dispatch({ type: "VALID-COUPON"})
+    } else {
+        dispatch({ type: "INVALID-COUPON"})
+    }
+}
+
+export const clearCart = (dispatch) => {
+    dispatch({ type: "CLEAR-CART"})
+}

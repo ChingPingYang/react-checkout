@@ -26,10 +26,6 @@ const useGetPhoto = (albumId) => {
                     return [...prev, ...setPrice(res.data)];
                 }))
             }
-            
-            // let x = Math.round(Math.random() * 10000) / 100
-            // console.log(x)
-            
         })
         .catch(err => {
             if(err) setError(err)

@@ -1,6 +1,6 @@
 export const init = {
     cart: JSON.parse(localStorage.getItem('cart')) || [],
-    coupons: false,
+    coupon: false,
     error: null
 }
 
@@ -15,7 +15,25 @@ export const cartReducer = (state, action) => {
                 ...state,
                 cart: payload
             };
-        
+        case "VALID-COUPON":
+            return {
+                ...state,
+                coupon: true,
+                error: null
+            }
+        case "INVALID-COUPON":
+            return {
+                ...state,
+                coupon: false,
+                error: "Invalid coupon"
+            }
+        case "CLEAR-CART":
+            localStorage.removeItem('cart');
+            return {
+                cart: [],
+                coupon: false,
+                error: null
+            }
         default:
             return state;
     }

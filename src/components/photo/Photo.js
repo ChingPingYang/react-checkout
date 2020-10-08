@@ -34,7 +34,7 @@ const Wrap = styled.div`
     margin-top: 30px;
     margin-right: 1.5%;
     flex-direction: column;
-    border: solid 1px red;
+    box-shadow: 3px 10px 17px -3px rgba(60,83,102,0.3); 
     ${media.tablat_S} {
         margin-top: 40px;
     }
@@ -59,7 +59,7 @@ const ContentWrap = styled.div`
     padding: 5px;
     display: flex;
     flex-direction: column;
-    border:solid 3px pink;
+    
     h3 {
         font-size: 1.3rem;
         color: ${props => props.theme.darkGray};

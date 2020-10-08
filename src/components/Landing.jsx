@@ -32,7 +32,7 @@ const Wrapper = styled.main`
     align-items: center;
     margin-top: 40px;
     margin-bottom: 20px;
-    border: solid 1px red;
+    
     ${media.tablat_S} {
         margin-top: 10px;
         flex-direction: column;
@@ -45,7 +45,7 @@ const ProductListWrap = styled.div`
     flex-direction: row;
     flex-wrap: wrap;
     justify-content: center;
-    border: solid 1px green;
+    
     ${media.tablat_S} {
         width: 100%;
         align-items: center;

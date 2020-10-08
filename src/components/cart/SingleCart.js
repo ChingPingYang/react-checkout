@@ -53,6 +53,7 @@ const Wrap = styled.div`
     display: flex;
     align-items: center;
     background-color: white;
+    
     ${media.mobile} {
         flex-direction: column;
     }
@@ -64,6 +65,7 @@ const Img = styled.img`
     object-fit: cover;
     ${media.mobile} {
         margin-top: 10px;
+        margin-right: 0px;
     }
 `
 const CartContent = styled.div`
@@ -91,7 +93,7 @@ const CartContent = styled.div`
     ${media.mobile} {
         width: 100%;
         align-items: center;
-        margin: 10px 0px;     
+        margin: 10px 0px;    
     }
 `
 const CartName = styled.div`
@@ -170,33 +172,7 @@ const PlusReal = styled.div`
         transform: translateX(-50%) translateY(-50%) rotate(90deg);
     }
 `
-const PlusFake = styled.div`
-    width: 20px;
-    height: 20px;
-    position: relative;
-    border-radius: 100%;
-    border: solid 1px ${props => props.theme.lightGray};
-    :before {
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 2px;
-        background-color: ${props => props.theme.lightGray};
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%);
-    }
-    :after {
-        content: "";
-        position: absolute;
-        width: 8px;
-        height: 2px;
-        background-color: ${props => props.theme.lightGray};
-        top: 50%;
-        left: 50%;
-        transform: translateX(-50%) translateY(-50%) rotate(90deg);
-    }
-`
+
 const RemoveCart = styled.div`
     width: 70px;
     cursor: pointer;
